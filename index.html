@@ -1,0 +1,159 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="style.css" rel="stylesheet">
+     <script src="script.js"></script>
+    <title>PhishNet - Phishing Awareness Game</title>
+</head>
+<body>
+    <div class="container">
+        <div id="titleScreen">
+            <h1 class="title">PhishNet</h1>
+            <p class="subtitle">Learn to identify phishing emails and protect yourself online</p>
+            <button class="btn" onclick="showGameSetup()">Play Game</button>
+            <button class="btn secondary" onclick="showTutorial()">Tutorial</button>
+            <button class="btn secondary" onclick="showCustomEmailCreation()">Add Custom Email</button>
+            <button class="btn secondary" onclick="manageCustomEmails()">Manage Custom Emails</button>
+        </div>
+
+        <div id="gameSetup" class="game-setup">
+            <h2>Game Setup</h2>
+            <div class="setup-option">
+                <label>Timer:</label>
+                <div class="toggle" id="timerToggle" onclick="toggleTimer()"></div>
+            </div>
+            <div class="setup-option">
+                <label>Rounds:</label>
+                <button class="round-btn active" onclick="selectRounds(5)">5</button>
+                <button class="round-btn" onclick="selectRounds(10)">10</button>
+                <button class="round-btn" onclick="selectRounds(15)">15</button>
+            </div>
+            <button class="btn" onclick="startGame()">Start Game</button>
+            <button class="btn back-btn" onclick="showTitleScreen()">Back</button>
+        </div>
+
+    
+        <div id="gameArea" class="game-area">
+            <div class="game-header">
+                <div class="score">Score: <span id="score">0</span>/<span id="totalRounds">5</span></div>
+                <div class="timer" id="timerDisplay" style="display: none;">Time: <span id="timeLeft">30</span>s</div>
+            </div>
+
+            <div class="email-container">
+                <div class="email-header">
+                    <div class="email-field"><strong>From:</strong> <span id="emailFrom"></span></div>
+                    <div class="email-field"><strong>To:</strong> <span id="emailTo"></span></div>
+                    <div class="email-field"><strong>Subject:</strong> <span id="emailSubject"></span></div>
+                </div>
+                <div class="email-body" id="emailBody"></div>
+            </div>
+
+            <div class="game-buttons">
+                <button class="btn phish-btn" onclick="answerPhish()">This is Phishing</button>
+                <button class="btn safe-btn" onclick="answerSafe()">This is Safe</button>
+            </div>
+
+            <div class="feedback" id="feedback">
+                <h3 id="feedbackTitle"></h3>
+                <p id="feedbackText"></p>
+                <button class="btn" onclick="nextEmail()" id="nextBtn">Next Email</button>
+            </div>
+        </div>
+
+
+        <div id="tutorial" class="tutorial">
+            <h2>How to Spot Phishing Emails</h2>
+            
+            <h3>Red Flags to Watch For:</h3>
+            <ul>
+                <li><strong>Suspicious sender addresses:</strong> Check for misspellings or suspicious domains</li>
+                <li><strong>Urgent language:</strong> "Act now!" "Your account will be closed!" "Immediate action required!"</li>
+                <li><strong>Generic greetings:</strong> "Dear Customer" instead of your actual name</li>
+                <li><strong>Suspicious links:</strong> Hover over links to see where they really go</li>
+                <li><strong>Unexpected attachments:</strong> Be cautious of unexpected files</li>
+                <li><strong>Grammar and spelling errors:</strong> Professional companies proofread their emails</li>
+                <li><strong>Requests for personal information:</strong> Legitimate companies won't ask for passwords via email</li>
+            </ul>
+
+            <h3>What to look for in legitimate emails:</h3>
+            <ul>
+                <li>Proper company branding and professional formatting</li>
+                <li>Your actual name and account details</li>
+                <li>Clear, professional language</li>
+                <li>Valid company contact information</li>
+                <li>Consistent domain names</li>
+            </ul>
+
+            <h3>Best Practices:</h3>
+            <ul>
+                <li>When in doubt, contact the company directly through their official website</li>
+                <li>Never click suspicious links - type the website URL manually</li>
+                <li>Keep your software and antivirus updated</li>
+                <li>Use two-factor authentication when available</li>
+            </ul>
+
+            <button class="btn back-btn" onclick="showTitleScreen()">Back to Menu</button>
+        </div>
+
+        <div id="customEmailSection" class="custom-email-section">
+
+         <h2>Add Custom Email</h2>
+         <p style="color: #666; margin-bottom: 20px;">Create your own phishing or legitimate email scenarios for educational purposes.</p>
+    
+        <form id="customEmailForm">
+            <div class="form-group">
+                <label for="customFrom">From Email:</label>
+                <input type="email" id="customFrom" placeholder="e.g., security@suspicious-site.com" required>
+        </div>
+        
+        <div class="form-group">
+            <label for="customTo">To Email:</label>
+            <input type="email" id="customTo" placeholder="e.g., user@email.com" required>
+        </div>
+        
+        <div class="form-group">
+            <label for="customSubject">Subject:</label>
+            <input type="text" id="customSubject" placeholder="e.g., Urgent Account Verification Required" required>
+        </div>
+        
+        <div class="form-group">
+            <label for="customBody">Email Body:</label>
+            <textarea id="customBody" placeholder="Write the email content here..." required></textarea>
+        </div>
+        
+        <div class="form-group">
+            <label for="customType">Email Type:</label>
+            <select id="customType" required>
+                <option value="">Select type...</option>
+                <option value="phishing">Phishing Email</option>
+                <option value="legitimate">Legitimate Email</option>
+            </select>
+        </div>
+        
+        <div class="form-group">
+            <label for="customExplanation">Explanation:</label>
+            <textarea id="customExplanation" placeholder="Explain why this email is phishing or legitimate. What are the red flags or legitimate indicators?" required></textarea>
+        </div>
+        
+        <div class="btn-group">
+            <button type="button" class="btn" onclick="previewCustomEmail()">Preview Email</button>
+            <button type="button" class="btn" onclick="addCustomEmail()">Add to Game</button>
+            <button type="button" class="btn back-btn" onclick="showTitleScreen()">Back</button>
+        </div>
+    </form>
+    
+        <div id="customEmailPreview" class="custom-email-preview" style="display: none;">
+            <h3>Email Preview:</h3>
+            <div class="preview-header">
+                <div class="preview-field"><strong>From:</strong> <span id="previewFrom"></span></div>
+                <div class="preview-field"><strong>To:</strong> <span id="previewTo"></span></div>
+                <div class="preview-field"><strong>Subject:</strong> <span id="previewSubject"></span></div>
+            </div>
+        <div class="preview-body" id="previewBody"></div>
+        </div>
+</div>
+    </div>
+
+</body>
+</html>

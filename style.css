@@ -1,0 +1,293 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Arial', sans-serif;
+    background: blue;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.container {
+    background: white;
+    border-radius: 20px;
+    box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+    padding: 40px;
+    max-width: 900px;
+    width: 90%;
+    text-align: center;
+}
+
+.title {
+    font-size: 3rem;
+    color: yellow;
+    margin-bottom: 20px;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+}
+
+.subtitle {
+    font-size: 1.2rem;
+    color: #666;
+    margin-bottom: 40px;
+}
+
+.btn {
+    background: black;
+    color: white;
+    border: none;
+    padding: 15px 30px;
+    margin: 10px;
+    border-radius: 10px;
+    font-size: 1.1rem;
+    cursor: pointer;
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+}
+
+.btn.secondary {
+    background: linear-gradient(45deg, #8a693b, #f5576c);
+}
+
+.game-setup {
+    display: none;
+}
+
+.setup-option {
+    margin: 20px 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+}
+
+.setup-option label {
+    font-weight: bold;
+    color: #333;
+}
+
+.round-btn {
+    background: #e0e0e0;
+    color: #333;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+.round-btn.active {
+    background: #383838;
+    color: white;
+}
+
+.toggle {
+    position: relative;
+    width: 60px;
+    height: 30px;
+    background: #ccc;
+    border-radius: 15px;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+.toggle.active {
+    background: #ffffff;
+}
+
+.toggle::after {
+    content: '';
+    position: absolute;
+    width: 26px;
+    height: 26px;
+    background: white;
+    border-radius: 50%;
+    top: 2px;
+    left: 2px;
+    transition: left 0.3s;
+}
+
+.toggle.active::after {
+    left: 32px;
+}
+
+.game-area {
+    display: none;
+}
+
+.game-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 30px;
+}
+
+.score {
+    font-size: 1.2rem;
+    font-weight: bold;
+}
+
+.timer {
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: #f5576c;
+}
+
+.email-container {
+    background: #f8f9fa;
+    border: 2px solid #dee2e6;
+    border-radius: 10px;
+    padding: 20px;
+    margin: 20px 0;
+    text-align: left;
+}
+
+.email-header {
+    border-bottom: 1px solid #dee2e6;
+    padding-bottom: 10px;
+    margin-bottom: 15px;
+}
+
+.email-field {
+    margin: 5px 0;
+    font-size: 0.9rem;
+}
+
+.email-field strong {
+    color: #333;
+}
+
+.email-body {
+    line-height: 1.6;
+    color: #444;
+}
+
+.game-buttons {
+    margin-top: 30px;
+}
+
+.phish-btn {
+    background: linear-gradient(45deg, #ff6b6b, #ee5a24);
+    margin-right: 20px;
+}
+
+.safe-btn {
+    background: linear-gradient(45deg, #51cf66, #40c057);
+}
+
+.feedback {
+    margin-top: 20px;
+    padding: 20px;
+    border-radius: 10px;
+    display: none;
+}
+
+.feedback.correct {
+    background: #d4edda;
+    border: 1px solid #c3e6cb;
+    color: #155724;
+}
+
+.feedback.incorrect {
+    background: #f8d7da;
+    border: 1px solid #f5c6cb;
+    color: #721c24;
+}
+
+.tutorial {
+    display: none;
+    text-align: left;
+}
+
+.tutorial h3 {
+    color: #667eea;
+    margin: 20px 0 10px 0;
+}
+
+.tutorial ul {
+    margin: 10px 0 10px 20px;
+}
+
+.tutorial li {
+    margin: 5px 0;
+}
+
+.back-btn {
+    background: #6c757d;
+    margin-top: 20px;
+}
+
+.custom-email-section {
+    display: none;
+    text-align: left;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.form-group {
+    margin: 15px 0;
+}
+
+.form-group label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 5px;
+    color: #333;
+}
+
+.form-group input, .form-group textarea, .form-group select {
+    width: 100%;
+    padding: 10px;
+    border: 2px solid #dee2e6;
+    border-radius: 8px;
+    font-size: 1rem;
+    font-family: inherit;
+}
+
+.form-group textarea {
+    min-height: 120px;
+    resize: vertical;
+}
+
+.form-group select {
+    cursor: pointer;
+}
+
+.custom-email-preview {
+    background: #f8f9fa;
+    border: 2px solid #dee2e6;
+    border-radius: 10px;
+    padding: 20px;
+    margin: 20px 0;
+}
+
+.preview-header {
+    border-bottom: 1px solid #dee2e6;
+    padding-bottom: 10px;
+    margin-bottom: 15px;
+}
+
+.preview-field {
+    margin: 5px 0;
+    font-size: 0.9rem;
+}
+
+.preview-body {
+    line-height: 1.6;
+    color: #444;
+    white-space: pre-wrap;
+}
+
+.btn-group {
+    display: flex;
+    gap: 10px;
+    margin-top: 20px;
+}
