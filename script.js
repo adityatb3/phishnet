@@ -11,12 +11,12 @@ let gameState = {
 
 const emails = [
     {
-        from: "security@amaz0n.com",
+        from: "amazonn@gmail.com",
         to: "you@email.com",
-        subject: "URGENT: Your Account Has Been Compromised!",
-        body: "Dear Customer,\n\nYour Amazon account has been compromised! Click here immediately to secure your account: http://secure-amazon-verify.net/login\n\nIf you don't act within 24 hours, your account will be permanently suspended!\n\nAmazon Security Team",
+        subject: "[External Email] Package arriving late!",
+        body: "Dear Customer,\n\nWe are riting to inform you that you have to login to your account to ensure propery delivery of your package. Click here as soon as humanly possible to resolve thie issue. Or follow this link, but be as fast as you can. ",
         isPhishing: true,
-        explanation: "This is phishing! Red flags: suspicious domain (amaz0n.com instead of amazon.com), urgent language, generic greeting, and suspicious link to a fake domain."
+        explanation: "This is phishing! Look for incorrect/misspelled emails, misspelled words, urgency, external emails, and threats"
     },
     {
         from: "notifications@amazon.com",
@@ -69,6 +69,7 @@ function showTitleScreen() {
     document.getElementById('gameSetup').style.display = 'none';
     document.getElementById('gameArea').style.display = 'none';
     document.getElementById('tutorial').style.display = 'none';
+    document.getElementById('customEmailSection').style.display = 'none';
     document.getElementById('titleScreen').style.display = 'block';
     resetGame();
 }
@@ -123,7 +124,7 @@ function loadNextEmail() {
 
 
     if (gameState.timerEnabled) {
-        gameState.timeLeft = 30;
+        gameState.timeLeft = 10;
         updateTimerDisplay();
         gameState.timerInterval = setInterval(() => {
             gameState.timeLeft--;
@@ -270,42 +271,3 @@ function addCustomEmail() {
     document.getElementById('customEmailPreview').style.display = 'none';
 }
 
-function manageCustomEmails() {
-    if (customEmails.length === 0) {
-        alert('No custom emails created yet. Create some first!');
-        return;
-    }
-    
-    let emailList = 'Your Custom Emails:\n\n';
-    customEmails.forEach((email, index) => {
-        emailList += `${index + 1}. ${email.subject} (${email.isPhishing ? 'Phishing' : 'Legitimate'})\n`;
-    });
-    
-    emailList += '\nEnter the number of an email to delete it, or click Cancel to go back:';
-    
-    const choice = prompt(emailList);
-    
-    if (choice && !isNaN(choice)) {
-        const index = parseInt(choice) - 1;
-        if (index >= 0 && index < customEmails.length) {
-            const deletedEmail = customEmails[index];
-            
-       
-            customEmails.splice(index, 1);
-            
-         
-            const mainIndex = emails.findIndex(email => 
-                email.isCustom && 
-                email.subject === deletedEmail.subject && 
-                email.from === deletedEmail.from
-            );
-            if (mainIndex !== -1) {
-                emails.splice(mainIndex, 1);
-            }
-            
-            alert(`Email "${deletedEmail.subject}" has been deleted.`);
-        } else {
-            alert('Invalid email number.');
-        }
-    }
-}
