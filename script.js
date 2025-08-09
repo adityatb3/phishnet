@@ -57,6 +57,31 @@ const emails = [
         body: "ALERT: We detected suspicious activity on your account!\n\nSomeone tried to login from Nigeria at 3:47 AM\n\nClick here to verify your identity NOW: http://boa-verify.com/secure-login\n\nEnter your username, password, and SSN to confirm it's really you.\n\nBank of America Security",
         isPhishing: true,
         explanation: "This is phishing! Red flags: fake domain (bankofamerica-security.com), urgent language, suspicious login location designed to create panic, and request for sensitive information including SSN."
+    },
+    {
+        from: "company@gmail.com",
+        to: "customer@gmail.com",
+        subject: "Promotion",
+        body: "Dear User,\n\ncongratulations! All users are being upgraded to our premium Pro for the next year. In order for it be activated, following the link Sign in Re-Activate your Account. http://upgradePro.co.m",
+        isPhishing: true,
+        explanation: "This is phishing! Look for incorrect/fake domains and spelling/grammar errors."
+    },
+    {
+        from:"company@gmail.com",
+        to: "customer@gmail.com",
+        subject: "Invoice",
+        body:"Hi,\n\nThanks for working with us. Your bill for $674.75 was due 4 Aug 2025. If you have already paid it, please ignore this email and sorry for bothering you. If not, please do so as soon as possible. \nTo pay the bill visit http://ln.shares.com/6Tg3oSls8A0OpJWS1pOldji42xZ3qz.\n If you have any questions or want to arrange alternate payments don't hesitate to get in touch.\n Thanks.",
+        isPhishing: true,
+        explanation: "This is phishing! Fake invoice emails such as this evoke fear and urgency, and often trap users into paying for goods or services they never recieved."
+    },
+    {
+        from:"company@gmail.com",
+        to:"customer@gmail.com",
+        subject: "Google Docs",
+        body: "Todd Pharell has invited you to view the following document:\n\nOpen in Docs",
+        isPhishing: true,
+        explanation: "This is phishing! This is a common scam that encourages to click on a link that takes you to an almost identical version of Google's login page. "
+
     }
 ];
 
